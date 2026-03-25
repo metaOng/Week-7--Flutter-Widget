@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import './widgets/dialog.dart';
-import './widgets/snackbar.dart';
-import './widgets/textfield.dart';
-import './widgets/drawer.dart';
-import './widgets/bottomsheet.dart';
-import './widgets/page2.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,8 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aplikasi Navigasi',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePage(), // Ini akan memanggil class HomePage Anda
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const HomePage(), // Memanggil halaman HomePage
     );
   }
 }
@@ -38,10 +34,34 @@ class HomePage extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SecondPage()),
+              MaterialPageRoute(
+                builder: (context) => const SecondPage(),
+              ),
             );
           },
           child: const Text("Pergi ke Halaman Kedua"),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Navigation Page"),
+        backgroundColor: Colors.blue,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text("Kembali"),
         ),
       ),
     );
